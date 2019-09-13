@@ -10,7 +10,8 @@ export default class AddNote extends React.Component{
         const note = {
             name: e.target['noteName'].value,
             content: e.target['noteContent'].value,
-            id: e.target['folderSelect'].value
+            folderId: e.target['folderSelect'].value,
+            modified: new Date()
     }
         console.log(note)
         fetch ('http://localhost:9090/notes',{
@@ -21,8 +22,8 @@ export default class AddNote extends React.Component{
         .then(res => {
             if( res.ok) return res.json();
         })
-        .then(folder => {
-            this.props.history.push('/')
+        .then(note => {
+            this.props.history.push(`/folder/${note.folderId}`)
             this.context.AddNote(note)
         })
         }
@@ -38,7 +39,7 @@ export default class AddNote extends React.Component{
                     <input type="text" id="noteContent" required></input>
                     <label htmlFor="noteFolder">Folder</label>
                     <select id="folderSelect">
-                        {folders.map(folder => <option value={folder.id}>{folder.name}</option>)}
+                        {folders.map(folder => <option key={folder.id} value={folder.id}>{folder.name}</option>)}
                     </select>
                     <button type="submit">Add Note</button>
                 </NotefulForm>
