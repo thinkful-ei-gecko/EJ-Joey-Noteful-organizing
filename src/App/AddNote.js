@@ -26,6 +26,7 @@ export default class AddNote extends React.Component{
             this.props.history.push(`/folder/${note.folderId}`)
             this.context.AddNote(note)
         })
+        .catch(error => console.log(error.message))
         }
         render(){
             const {folders = []} = this.context
