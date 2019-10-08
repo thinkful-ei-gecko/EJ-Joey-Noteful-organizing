@@ -16,7 +16,7 @@ export default class AddNote extends React.Component{
     
     console.log(note)
     
-        fetch ('http://localhost:8000/api/notes',{
+        fetch ('https://whispering-harbor-90519.herokuapp.com/api/notes',{
             method: 'POST',
             headers: {'content-type': 'application/JSON'},
             body: JSON.stringify(note)

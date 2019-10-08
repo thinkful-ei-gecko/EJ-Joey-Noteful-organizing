@@ -9,7 +9,7 @@ export default class AddFolder extends React.Component{
     handleAddFolder = (e) => {
         const folder = {name: e.target['folderInput'].value}
         console.log(folder)
-        fetch ('http://localhost:8000/api/folders',{
+        fetch ('https://whispering-harbor-90519.herokuapp.com/api/folders',{
             method: 'POST',
             headers: {'content-type': 'application/JSON'},
             body: JSON.stringify(folder)
