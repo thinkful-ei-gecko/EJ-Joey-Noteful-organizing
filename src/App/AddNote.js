@@ -14,7 +14,7 @@ export default class AddNote extends React.Component{
             modified: new Date()
     }
         console.log(note)
-        fetch ('http://localhost:9090/notes',{
+        fetch ('http://localhost:8000/notes',{
             method: 'POST',
             headers: {'content-type': 'application/JSON'},
             body: JSON.stringify(note)
