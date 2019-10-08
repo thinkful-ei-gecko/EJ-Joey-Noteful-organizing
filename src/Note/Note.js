@@ -22,21 +22,19 @@ export default class Note extends React.Component {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json'
-      },
+      }
     })
       .then(res => {
-        if (!res.ok)
-          return res.json().then(e => Promise.reject(e))
-        return res.json()
+        if (!res.ok) {
+          return res.json().then(e => Promise.reject(e)) }
+        return;
       })
       .then(() => {
         this.context.deleteNote(noteId)
         // allow parent to perform extra behaviour
         this.props.onDeleteNote(noteId)
       })
-      .catch(error => {
-        console.error({ error })
-      })
+      .catch(error => Promise.reject(error))
   }
 
   render() {
@@ -73,6 +71,6 @@ export default class Note extends React.Component {
 
 Note.propTypes = {
   name: PropTypes.string,
-  id: PropTypes.string,
+  id: PropTypes.number,
   modified: PropTypes.string
 }

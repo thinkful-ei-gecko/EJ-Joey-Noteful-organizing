@@ -49,7 +49,7 @@ class App extends Component {
     renderNavRoutes() {
         return (
             <React.Fragment>
-                {['/', '/folder/:folderId'].map(path => (
+                {['/', '/folder/:id'].map(path => (
                     <Route
                         exact
                         key={path}
@@ -57,7 +57,7 @@ class App extends Component {
                         component={NoteListNav}
                     />
                 ))}
-                <Route path="/note/:noteId" component={NotePageNav} />
+                <Route path="/note/:id" component={NotePageNav} />
                 <Route path="/add-folder" component={NotePageNav} />
                 <Route path="/add-note" component={NotePageNav} />
             </React.Fragment>
@@ -67,7 +67,7 @@ class App extends Component {
     renderMainRoutes() {
         return (
             <React.Fragment>
-                {['/', '/folder/:folderId'].map(path => (
+                {['/', '/folder/:id'].map(path => (
                     <Route
                         exact
                         key={path}
@@ -75,7 +75,7 @@ class App extends Component {
                         component={NoteListMain}
                     />
                 ))}
-                <Route path="/note/:noteId" component={NotePageMain} />
+                <Route path="/note/:id" component={NotePageMain} />
                 <Route path="/add-folder" component={AddFolder} />
                 <Route path="/add-note" component={AddNote} />
             </React.Fragment>
