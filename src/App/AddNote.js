@@ -10,11 +10,13 @@ export default class AddNote extends React.Component{
         const note = {
             name: e.target['noteName'].value,
             content: e.target['noteContent'].value,
-            folderId: e.target['folderSelect'].value,
+            folderid: e.target['folderSelect'].value,
             modified: new Date()
     }
-        console.log(note)
-        fetch ('http://localhost:8000/notes',{
+    
+    console.log(note)
+    
+        fetch ('http://localhost:8000/api/notes',{
             method: 'POST',
             headers: {'content-type': 'application/JSON'},
             body: JSON.stringify(note)
@@ -23,7 +25,7 @@ export default class AddNote extends React.Component{
             if( res.ok) return res.json();
         })
         .then(note => {
-            this.props.history.push(`/folder/${note.folderId}`)
+            this.props.history.push(`/`)
             this.context.AddNote(note)
         })
         .catch(error => console.log(error.message))
