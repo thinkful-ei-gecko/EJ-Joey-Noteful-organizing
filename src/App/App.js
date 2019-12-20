@@ -47,6 +47,24 @@ class App extends Component {
     };
     
     renderNavRoutes() {
+        const { folders = []} = this.state
+        if (folders.length === 0){
+            return(
+                <React.Fragment>
+                {['/', '/folder/:id'].map(path => (
+                    <Route
+                        exact
+                        key={path}
+                        path={path}
+                        component={NoteListNav}
+                    />
+                ))}
+                <Route path="/note/:id" component={NotePageNav} />
+                <Route path="/add-folder" component={NotePageNav} />
+
+            </React.Fragment>
+            )
+        }else{
         return (
             <React.Fragment>
                 {['/', '/folder/:id'].map(path => (
@@ -62,24 +80,35 @@ class App extends Component {
                 <Route path="/add-note" component={NotePageNav} />
             </React.Fragment>
         );
+                }
     }
 
     renderMainRoutes() {
+        const { folders = []} = this.state
+        if (folders.length === 0){
         return (
             <React.Fragment>
-                {['/', '/folder/:id'].map(path => (
-                    <Route
-                        exact
-                        key={path}
-                        path={path}
-                        component={NoteListMain}
-                    />
-                ))}
-                <Route path="/note/:id" component={NotePageMain} />
                 <Route path="/add-folder" component={AddFolder} />
-                <Route path="/add-note" component={AddNote} />
+                <p> Add a folder to add a note</p>
             </React.Fragment>
         );
+                }else{
+                    return (
+                        <React.Fragment>
+                            {['/', '/folder/:id'].map(path => (
+                                <Route
+                                    exact
+                                    key={path}
+                                    path={path}
+                                    component={NoteListMain}
+                                />
+                            ))}
+                            <Route path="/note/:id" component={NotePageMain} />
+                            <Route path="/add-folder" component={AddFolder} />
+                            <Route path="/add-note" component={AddNote} />
+                        </React.Fragment>
+                    );
+                }
     }
     HandleAddFolder=(folder)=>{
         this.setState({
