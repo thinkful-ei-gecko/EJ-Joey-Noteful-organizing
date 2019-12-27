@@ -61,5 +61,5 @@ export default class AddFolder extends React.Component{
     }
 }
 AddFolder.propTypes ={
-    note: PropTypes.string.isRequired
+    folder: PropTypes.string.isRequired
 }
