@@ -51,6 +51,6 @@ export default class AddNote extends React.Component{
             )
         }
 }
-AddNote.PropTypes ={
+AddNote.propTypes ={
     note: PropTypes.object.isRequired
 }
