@@ -1,5 +1,6 @@
 import React from 'react';
 import ApiContext from '../ApiContext';
+import PropTypes from 'prop-types';
 import NotefulForm from '../NotefulForm/NotefulForm'
 
 
@@ -49,4 +50,7 @@ export default class AddNote extends React.Component{
                 </div>
             )
         }
+}
+AddNote.PropTypes ={
+    note: PropTypes.object.isRequired
 }

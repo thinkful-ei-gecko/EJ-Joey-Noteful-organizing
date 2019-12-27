@@ -1,5 +1,6 @@
 import React from 'react';
 import NotefulForm from '../NotefulForm/NotefulForm'
+import PropTypes from 'prop-types';
 import ApiContext from '../ApiContext';
 
 export default class AddFolder extends React.Component{
@@ -58,4 +59,7 @@ export default class AddFolder extends React.Component{
             </div>
         )
     }
+}
+AddFolder.PropTypes ={
+    note: PropTypes.string.isRequired
 }
